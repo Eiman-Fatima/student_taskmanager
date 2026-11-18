@@ -37,10 +37,20 @@ def find_task(tasks, task_id):
 
 
 def complete_task(tasks, task_id):
-    """Mark a task as completed."""
+    """Mark a pending task as completed."""
+
+    if not isinstance(task_id, int) or task_id <= 0:
+        raise ValueError("Task ID must be a positive number.")
+
     task = find_task(tasks, task_id)
-    if task:
-        task["completed"] = True
+
+    if task is None:
+        raise ValueError(f"No task found with id {task_id}.")
+
+    if task["completed"]:
+        raise ValueError("Task is already completed.")
+
+    task["completed"] = True
     return task
 
 
