@@ -21,9 +21,20 @@ def save_tasks(tasks, path=DATA_FILE):
 
 
 def add_task(tasks, title):
-    """Add a new task."""
-    next_id = max((t["id"] for t in tasks), default=0) + 1
-    task = {"id": next_id, "title": title, "completed": False}
+    """Validate and add a new task with a unique ID."""
+
+    if not isinstance(title, str) or not title.strip():
+        raise ValueError("Task title cannot be empty.")
+
+    title = title.strip()
+    next_id = max((task["id"] for task in tasks), default=0) + 1
+
+    task = {
+        "id": next_id,
+        "title": title,
+        "completed": False
+    }
+
     tasks.append(task)
     return task
 
