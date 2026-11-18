@@ -1,5 +1,5 @@
 # Student Task Manager
-Project Status: Ready for Development
+Project Status: Ready for Development and Testing
 
 A small Python console application to manage student tasks, built to practice Git and GitHub workflows.
 
