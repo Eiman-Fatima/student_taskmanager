@@ -14,6 +14,11 @@ class TestDeleteTask(unittest.TestCase):
         tm.delete_task(tasks, task["id"])
         self.assertEqual(tasks, [])
 
+    def test_delete_invalid_zero_id(self):
+        with self.assertRaises(ValueError):
+            tm.delete_task([], 0)
+
+
     def test_delete_invalid_id(self):
         with self.assertRaises(ValueError):
             tm.delete_task([], 99)
