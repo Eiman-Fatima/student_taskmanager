@@ -18,7 +18,9 @@ class TestAddTask(unittest.TestCase):
     def test_add_empty_task_rejected(self):
         with self.assertRaises(ValueError):
             tm.add_task([], "   ")
-
+    def test_add_none_title_rejected(self):
+        with self.assertRaises(ValueError):
+            tm.add_task([], None)
 
 if __name__ == "__main__":
     unittest.main()
