@@ -8,6 +8,14 @@ import task_manager as tm  # noqa: E402
 
 
 class TestCompleteTask(unittest.TestCase):
+
+    def test_already_completed_task_rejected(self):
+        tasks = []
+        task = tm.add_task(tasks, "Study Git")
+        tm.complete_task(tasks, task["id"])
+
+        with self.assertRaises(ValueError):
+            tm.complete_task(tasks, task["id"])
     def test_complete_task(self):
         tasks = []
         task = tm.add_task(tasks, "Write report")
